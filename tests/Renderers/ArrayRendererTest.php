@@ -15,6 +15,8 @@ class ArrayRendererTest extends TestCase
 
         $settings = $menu->item('Settings')->order(1)->path('/settings')->inactive();
 
+        $menu->item('Overview')->order(1)->path('/overview')->inactive();
+
         $menu->item('Dashboard')->order(0)->path('/dashboard')->active();
 
         $settings->child('General')->path('/settings/general')->target(MenuItem::TARGET_BLANK);
@@ -70,6 +72,13 @@ class ArrayRendererTest extends TestCase
                             'children' => [],
                         ],
                     ],
+                ],
+                [
+                    'title' => 'Overview',
+                    'path' => '/overview',
+                    'is_active' => false,
+                    'target' => null,
+                    'children' => [],
                 ],
             ],
         ], (new ArrayRenderer())->render($menu));

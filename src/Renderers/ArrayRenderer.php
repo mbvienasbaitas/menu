@@ -27,7 +27,14 @@ class ArrayRenderer implements Renderer
     protected function sort(array $items): array
     {
         uasort($items, function (MenuItem $a, MenuItem $b) {
-            return ($a->order ?? PHP_INT_MAX) >= ($b->order ?? PHP_INT_MAX);
+            $aOrder = $a->order ?? PHP_INT_MAX;
+            $bOrder = $b->order ?? PHP_INT_MAX;
+
+            if ($aOrder == $bOrder) {
+                return 0;
+            }
+
+            return ($aOrder < $bOrder) ? -1 : 1;
         });
 
         return array_values($items);
