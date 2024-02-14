@@ -10,7 +10,10 @@ class ArrayRenderer implements Renderer
 {
     public function render(Menu $menu)
     {
-        return ['items' => array_map([$this, 'renderMenuItem'], $this->sort($menu->items))];
+        return [
+            'options' => $menu->options,
+            'items' => array_map([$this, 'renderMenuItem'], $this->sort($menu->items)),
+        ];
     }
 
     protected function renderMenuItem(MenuItem $menuItem): array

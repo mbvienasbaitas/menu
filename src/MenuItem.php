@@ -65,7 +65,11 @@ class MenuItem
 
     public function options(array $options): MenuItem
     {
-        $this->options = $options;
+        $this->options = [];
+
+        foreach ($options as $key => $value) {
+            $this->option($key, $value);
+        }
 
         return $this;
     }

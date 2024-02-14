@@ -13,6 +13,8 @@ class ArrayRendererTest extends TestCase
     {
         $menu = new Menu();
 
+        $menu->options(['admin' => false]);
+
         $settings = $menu->item('Settings')->order(1)->path('/settings')->inactive();
 
         $menu->item('Overview')->order(1)->path('/overview')->inactive()->option('auth', true);
@@ -30,6 +32,9 @@ class ArrayRendererTest extends TestCase
         $menu->item('Settings')->child('Advanced')->child('Generic');
 
         $this->assertEquals([
+            'options' => [
+                'admin' => false,
+            ],
             'items' => [
                 [
                     'title' => 'Dashboard',
