@@ -16,7 +16,9 @@ In order to use menu you need to create menu instance, after that just push new 
 ```php
 $menu = new \VienasBaitas\Menu\Menu();
 
-$menu->item('Dashboard')->path('/dashboard')->active();
+$menu->option('admin', true);
+
+$menu->item('Dashboard')->path('/dashboard')->active()->option('auth', true);
 $menu->item('Settings')->path('/settings')->order(0);
 $menu->item('Blog')->path('/blog')->target(\VienasBaitas\Menu\MenuItem::TARGET_BLANK);
 ```
@@ -33,17 +35,21 @@ $asArray = $renderer->render($menu);
 
 ### VienasBaitas\Menu\Menu
 
-| Method | Description | 
-|---|---|
+| Method                                          | Description                                              | 
+|-------------------------------------------------|----------------------------------------------------------|
+| options(array $options): VienasBaitas\Menu\Menu | Set menu instance options.                               |
+| option($key, $value): VienasBaitas\Menu\Menu    | Set menu instance option.                                |
 | item(string $title): VienasBaitas\Menu\MenuItem | Returns existing or creates a new item with given title. |
 
 ### VienasBaitas\Menu\MenuItem
 
-| Method | Description | 
-|---|---|
-| path(?string $path): VienasBaitas\Menu\MenuItem | Assigns path to menu item. |
-| active(): VienasBaitas\Menu\MenuItem | Marks menu item as active. |
-| inactive(): VienasBaitas\Menu\MenuItem | Marks menu item as inactive. |
-| order(int $order): VienasBaitas\Menu\MenuItem | Sets menu item order. |
-| target(?string $target): VienasBaitas\Menu\MenuItem | Sets menu item's target, for example `_blank`. |
-| child(string $title): VienasBaitas\Menu\MenuItem | Returns existing or creates a new child item with given title. |
+| Method                                              | Description                                                    | 
+|-----------------------------------------------------|----------------------------------------------------------------|
+| path(?string $path): VienasBaitas\Menu\MenuItem     | Assigns path to menu item.                                     |
+| active(): VienasBaitas\Menu\MenuItem                | Marks menu item as active.                                     |
+| inactive(): VienasBaitas\Menu\MenuItem              | Marks menu item as inactive.                                   |
+| order(int $order): VienasBaitas\Menu\MenuItem       | Sets menu item order.                                          |
+| target(?string $target): VienasBaitas\Menu\MenuItem | Sets menu item's target, for example `_blank`.                 |
+| options(array $options): VienasBaitas\Menu\MenuItem | Set menu item instance options.                                |
+| option($key, $value): VienasBaitas\Menu\MenuItem    | Set menu item instance option.                                 |
+| child(string $title): VienasBaitas\Menu\MenuItem    | Returns existing or creates a new child item with given title. |
