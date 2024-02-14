@@ -19,6 +19,8 @@ class MenuItem
 
     public ?string $target = null;
 
+    public array $options = [];
+
     public array $children = [];
 
     public function __construct(string $title)
@@ -57,6 +59,20 @@ class MenuItem
     public function target(?string $target): self
     {
         $this->target = $target;
+
+        return $this;
+    }
+
+    public function options(array $options): MenuItem
+    {
+        $this->options = $options;
+
+        return $this;
+    }
+
+    public function option($key, $value): MenuItem
+    {
+        $this->options[$key] = $value;
 
         return $this;
     }

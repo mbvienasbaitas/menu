@@ -15,9 +15,11 @@ class ArrayRendererTest extends TestCase
 
         $settings = $menu->item('Settings')->order(1)->path('/settings')->inactive();
 
-        $menu->item('Overview')->order(1)->path('/overview')->inactive();
+        $menu->item('Overview')->order(1)->path('/overview')->inactive()->option('auth', true);
 
-        $menu->item('Dashboard')->order(0)->path('/dashboard')->active();
+        $menu->item('Dashboard')->order(0)->path('/dashboard')->active()->options([
+            'icon' => 'dashboard',
+        ]);
 
         $settings->child('General')->path('/settings/general')->target(MenuItem::TARGET_BLANK);
 
@@ -34,6 +36,9 @@ class ArrayRendererTest extends TestCase
                     'path' => '/dashboard',
                     'is_active' => true,
                     'target' => null,
+                    'options' => [
+                        'icon' => 'dashboard',
+                    ],
                     'children' => [],
                 ],
                 [
@@ -41,12 +46,14 @@ class ArrayRendererTest extends TestCase
                     'path' => '/settings',
                     'is_active' => false,
                     'target' => null,
+                    'options' => [],
                     'children' => [
                         [
                             'title' => 'General',
                             'path' => '/settings/general',
                             'is_active' => false,
                             'target' => MenuItem::TARGET_BLANK,
+                            'options' => [],
                             'children' => [],
                         ],
                         [
@@ -54,12 +61,14 @@ class ArrayRendererTest extends TestCase
                             'path' => null,
                             'is_active' => false,
                             'target' => null,
+                            'options' => [],
                             'children' => [
                                 [
                                     'title' => 'Generic',
                                     'path' => null,
                                     'is_active' => false,
                                     'target' => null,
+                                    'options' => [],
                                     'children' => [],
                                 ],
                             ],
@@ -69,6 +78,7 @@ class ArrayRendererTest extends TestCase
                             'path' => null,
                             'is_active' => false,
                             'target' => null,
+                            'options' => [],
                             'children' => [],
                         ],
                     ],
@@ -78,6 +88,9 @@ class ArrayRendererTest extends TestCase
                     'path' => '/overview',
                     'is_active' => false,
                     'target' => null,
+                    'options' => [
+                        'auth' => true,
+                    ],
                     'children' => [],
                 ],
             ],

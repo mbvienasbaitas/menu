@@ -20,6 +20,7 @@ class ArrayRenderer implements Renderer
             'path' => $menuItem->path,
             'is_active' => $menuItem->isActive,
             'target' => $menuItem->target,
+            'options' => $menuItem->options,
             'children' => array_map([$this, 'renderMenuItem'], $this->sort($menuItem->children))
         ];
     }
